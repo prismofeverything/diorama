@@ -7,13 +7,13 @@
     <style>
       body {
       font-family: Monospace;
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       margin: 0px;
       overflow: hidden;
       }
       #info {
-      color: #fff;
+      color: #000;
       position: absolute;
       top: 10px;
       width: 100%;
@@ -26,10 +26,6 @@
   </head>
 
   <body>
-    <div id="info">
-      <a href="http://threejs.org" target="_blank">three.js</a> - Green Bean Books Diorama
-    </div>
-
     <script src="js/three.min.js"></script>
     <script src="js/loaders/MTLLoader.js"></script>
     <script src="js/loaders/OBJMTLLoader.js"></script>
@@ -51,7 +47,7 @@
         document.body.appendChild( container );
   
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-        camera.position.z = 2;
+        camera.position.z = 3;
   
         // scene
   
