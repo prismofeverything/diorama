@@ -21,24 +21,25 @@ var pod = function() {
     pointLight.position.z = 10;
     scene.add(pointLight);
 
-    time = 0;
-    extremeness = 0.01;
     radius = 5;
     segments = 16;
     rings = 16;
     sphereMaterial = new THREE.MeshLambertMaterial({color: 0xff3333});
     archetype = createSphere(radius, segments, rings, sphereMaterial);
     sphere = createSphere(radius, segments, rings, sphereMaterial);
+    sphere.position.x = 0;
+    sphere.position.y = 0; 
+    sphere.position.z = 0;
+    scene.add(sphere);
+
+    time = 0;
+    extremeness = 0.01;
     vertices = sphere.geometry.vertices.length;
     eccentricity = 1 / vertices;
     momentum = [];
     for (var m = 0; m < vertices; m++) {
       momentum.push(new THREE.Vector2(0.1, 0));
     }
-    sphere.position.x = 0;
-    sphere.position.y = 0; 
-    sphere.position.z = 0;
-    scene.add(sphere);
 
     foveaAngle = 45;
     near = 1;
@@ -112,13 +113,13 @@ var pod = function() {
 
   var render = function() {
     time++;
-    // sphere.rotation.x += 0.01;
-    // sphere.rotation.y += 0.02;
+    sphere.rotation.x += 0.01;
+    sphere.rotation.y += 0.02;
     camera.position.x = (mouse.x * 0.05);
     camera.position.y = (- mouse.y * 0.05);
     camera.lookAt(scene.position);
 
-    undulateAll(sphere);
+    // undulateAll(sphere);
 
     renderer.render(scene, camera);
   }
