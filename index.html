@@ -30,8 +30,6 @@
     <script src="js/loaders/MTLLoader.js"></script>
     <script src="js/loaders/OBJMTLLoader.js"></script>
 
-    <!-- <script src="js/Detector.js"></script> -->
-
     <script>
       var container;
       var camera, scene, renderer;
@@ -78,51 +76,42 @@
 
         });
 
-      loader.load('obj/yellow/GJ5MG4C5HJV117XBKJF767P2HXHE3Q1H.obj', 'obj/yellow/material.mtl');
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize( window.innerWidth, window.innerHeight );
-      container.appendChild( renderer.domElement );
+        loader.load('obj/yellow/GJ5MG4C5HJV117XBKJF767P2HXHE3Q1H.obj', 'obj/yellow/material.mtl');
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        container.appendChild( renderer.domElement );
 
-      document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-      window.addEventListener( 'resize', onWindowResize, false );
-
+        window.addEventListener( 'resize', onWindowResize, false );
       }
 
       function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
 
-      windowHalfX = window.innerWidth / 2;
-      windowHalfY = window.innerHeight / 2;
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
 
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-
-      renderer.setSize( window.innerWidth, window.innerHeight );
-
+        renderer.setSize( window.innerWidth, window.innerHeight );
       }
 
       function onDocumentMouseMove( event ) {
-
         mouseX = ( event.clientX - windowHalfX ) / 2;
         mouseY = ( event.clientY - windowHalfY ) / 2;
-
       }
 
       function animate() {
-
         requestAnimationFrame( animate );
         render();
-
       }
 
       function render() {
-
         camera.position.x = ( mouseX * 0.01 ); // * .0005;
         camera.position.y = ( - mouseY * 0.01 ); // * .0005;
         camera.lookAt( scene.position );
   
         renderer.render( scene, camera );
-
       }
 
     </script>
