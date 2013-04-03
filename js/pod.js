@@ -16,9 +16,7 @@ var pod = function() {
     scene.add(ambient);
 
     pointLight = new THREE.PointLight(0xFFFFFF);
-    pointLight.position.x = 10;
-    pointLight.position.y = 10;
-    pointLight.position.z = 10;
+    pointLight.position.set(10, 10, 10);
     scene.add(pointLight);
 
     time = 0;
@@ -35,9 +33,7 @@ var pod = function() {
     for (var m = 0; m < vertices; m++) {
       momentum.push(new THREE.Vector2(0.1, 0));
     }
-    sphere.position.x = 0;
-    sphere.position.y = 0; 
-    sphere.position.z = 0;
+    sphere.position.set(0, 0, 0);
     scene.add(sphere);
 
     foveaAngle = 45;
