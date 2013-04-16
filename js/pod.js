@@ -6,6 +6,7 @@ var pod = function() {
   var radius, segments, rings, sphereMaterial, sphere, archetype;
   var extremeness, vertices, eccentricity, time;
   var pointLight;
+  var subsphere;
 
   var init = function() {
     element = document.createElement('div');
@@ -35,6 +36,9 @@ var pod = function() {
     }
     sphere.position.set(0, 0, 0);
     scene.add(sphere);
+
+    subsphere = createSphere(radius / 4, segments, rings, sphereMaterial);
+    subsphere.position.set(5, 0, 0);
 
     foveaAngle = 45;
     near = 1;
@@ -114,7 +118,7 @@ var pod = function() {
     camera.position.y = (- mouse.y * 0.05);
     camera.lookAt(scene.position);
 
-    undulateAll(sphere);
+    // undulateAll(sphere);
 
     renderer.render(scene, camera);
   }
